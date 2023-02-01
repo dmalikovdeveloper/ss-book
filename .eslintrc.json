@@ -1,0 +1,50 @@
+{
+  "root": true,
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:import/typescript"
+      ],
+      "rules": {
+        "@typescript-eslint/await-thenable": "error",
+        "@typescript-eslint/consistent-type-definitions": "error",
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/no-empty-function": "error",
+        "@typescript-eslint/no-floating-promises": "error",
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-inferrable-types": [
+          "off",
+          {
+            "ignoreParameters": true
+          }
+        ],
+        "@typescript-eslint/promise-function-async": "error",
+        "brace-style": ["error", "1tbs"],
+        "id-blacklist": "off",
+        "id-match": "off",
+        "import/order": "error",
+        "no-empty": "error",
+        "no-multiple-empty-lines": "error",
+        "no-param-reassign": "error",
+        "no-template-curly-in-string": "error",
+        "no-underscore-dangle": "off",
+        "prefer-template": "error",
+        "guard-for-in": "off",
+        "import/no-cycle": ["error", { "maxDepth": 1 }]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}
