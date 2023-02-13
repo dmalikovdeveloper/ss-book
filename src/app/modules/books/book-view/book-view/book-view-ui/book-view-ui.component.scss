@@ -1,0 +1,33 @@
+:host {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    'book-header'
+    'page-holder';
+}
+
+.page-holder {
+  display: grid;
+  height: 100%;
+}
+
+.page {
+  display: grid;
+  height: 100%;
+
+  .page-bottom {
+
+  }
+
+  .content {
+    padding: 5px;
+  }
+}
+
+.add-task {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}

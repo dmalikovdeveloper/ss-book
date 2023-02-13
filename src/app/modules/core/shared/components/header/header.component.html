@@ -1,25 +1,15 @@
-<mat-toolbar color='primary'>
+<mat-toolbar color="primary">
   <mat-toolbar-row>
-    <div class='container-lg'>
-      <nav class='nav'>
-        <div class='row justify-content-start'>
-          <div class='col-auto'>
-            <a mat-raised-button routerLink="/">
-              Home
-            </a>
-          </div>
-          <div class='col-auto'>
-            <a mat-raised-button routerLink="/news">
-              News
-            </a>
-          </div>
-          <div class='col-auto'>
-            <a mat-raised-button routerLink="/books">
-              books
-            </a>
-          </div>
-        </div>
+    <div class="container-lg">
+      <nav class="nav">
+        <app-header-nav [user]="selectUser$ | async"></app-header-nav>
       </nav>
+      <div class="right-part">
+        <app-header-user-dropdown
+          (logoutEvent)="logout()"
+          [user]="selectUser$ | async"
+        ></app-header-user-dropdown>
+      </div>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// @ts-ignore
 const routes: Routes = [
   {
-    path: 'login',
+    path: 'auth',
     loadChildren: () =>
-      import('./modules/login/login.module').then((m) => m.LoginModule),
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'books',

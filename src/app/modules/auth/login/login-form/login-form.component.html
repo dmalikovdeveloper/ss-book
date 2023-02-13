@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-content>
+    <mat-card-header class="mb-3">
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <form class="example-form" [formGroup]="form" (ngSubmit)="submit()">
+      <app-control-text [label]="'Email'" [type]="'email'" [control]="form.controls.email">
+      </app-control-text>
+      <app-control-text [label]="'Password'" [type]="'password'" [control]="form.controls.password">
+      </app-control-text>
+      <mat-card-actions align="end">
+        <button [disabled]="selectUserLoginProcess$ | async" mat-stroked-button color="primary">
+          Send
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="bookCreate()">
+  <mat-card class="mb-4">
+    <mat-card-header class="mb-3">
+      <mat-card-title>Create book</mat-card-title>
+      <mat-card-subtitle>Select width and height for your book</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <app-control-text [label]="'Title'" [control]="form.controls.name"> </app-control-text>
+        <app-control-text [type]="'number'" [label]="'Width'" [control]="form.controls.width">
+        </app-control-text>
+        <app-control-text [type]="'number'" [label]="'Height'" [control]="form.controls.height">
+        </app-control-text>
+      </div>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+
+    <mat-card-actions align="end">
+      <button
+        color="accent"
+        type="submit"
+        mat-raised-button
+        [disabled]="selectBooksProcess$ | async"
+      >
+        Create book
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

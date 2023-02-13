@@ -4,16 +4,29 @@ import {
   ActionReducerMap,
   createFeatureSelector,
   createSelector,
-  MetaReducer
+  MetaReducer,
 } from '@ngrx/store';
+import { TodoReducer, BooksState } from '../store/books/reducers/books.reducers';
+import { AuthReducer, AuthState } from '../store/auth/reducers/auth.reducers';
 
-export interface State {
+// console.log all actions
+export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
+  return function (state, action) {
+    console.log('state', state);
+    console.log('action', action);
 
+    return reducer(state, action);
+  };
 }
 
-export const reducers: ActionReducerMap<State> = {
+export interface AppState {
+  booksState: BooksState
+  authState: AuthState
+}
 
+export const reducers: ActionReducerMap<AppState> = {
+  booksState: TodoReducer,
+  authState: AuthReducer,
 };
 
-
-export const metaReducers: MetaReducer<State>[] = isDevMode() ? [] : [];
+export const metaReducers: MetaReducer<AppState>[] = isDevMode() ? [debug] : [];

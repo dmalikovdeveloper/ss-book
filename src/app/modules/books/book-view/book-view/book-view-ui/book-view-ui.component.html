@@ -1,0 +1,19 @@
+<ng-container *ngIf='book'>
+  <header class='book-header d-flex justify-content-center align-content-center'>
+    <h1>{{book.name}}</h1>
+  </header>
+
+  <div class="book-holder">
+    <div class="page"
+         [style.width.px]="book.width"
+         [style.height.px]="book.height">
+
+      <div class="page-bottom">
+        <button mat-stroked-button color="accent" class="mat-button" (click)="pageUpdate()">Save</button>
+        <button mat-stroked-button color="accent" class="mat-button" (click)="pageAdd()">Add</button>
+      </div>
+    </div>
+
+    <mat-paginator #paginator (page)="pageSelect($event)"></mat-paginator>
+  </div>
+</ng-container>

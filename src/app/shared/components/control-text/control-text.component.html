@@ -1,0 +1,20 @@
+<ng-container *ngIf='control'>
+  <mat-form-field class="w-100 mb-2">
+    <mat-label>{{label}}</mat-label>
+    <input
+      [type]="type"
+      matInput
+      [formControl]="control"
+    />
+    <mat-error
+      *ngIf="control?.hasError('email') && !control?.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="control?.hasError('min') && !control?.hasError('required')">
+      Min value is <strong>{{control.errors?.min?.min}}</strong>
+    </mat-error>
+    <mat-error *ngIf="control?.hasError('required')">
+      Field is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</ng-container>

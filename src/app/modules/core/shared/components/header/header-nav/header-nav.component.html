@@ -1,0 +1,9 @@
+<nav class="nav">
+  <div class="row justify-content-start">
+    <div *ngFor="let page of pages" class="col-auto">
+      <a *ngIf='page.private && user || !page.private && !user' routerLinkActive="active-link" mat-stroked-button routerLink="/{{page.url}}">
+        {{page.name}}
+      </a>
+    </div>
+  </div>
+</nav>

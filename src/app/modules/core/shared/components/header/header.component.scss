@@ -1,0 +1,13 @@
+:host {
+  display: grid;
+
+  .container-lg {
+    display: grid;
+    grid-template-columns: auto auto;
+
+    .right-part {
+      display: grid;
+      justify-content: end;
+    }
+  }
+}

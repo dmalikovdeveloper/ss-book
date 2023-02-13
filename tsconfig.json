@@ -6,8 +6,8 @@
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitOverride": false,
+    "noPropertyAccessFromIndexSignature": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -22,7 +22,33 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@services/api": [
+        "src/app/shared/services/api/index.ts"
+      ],
+      "@services/utils": [
+        "src/app/shared/services/utils/index.ts"
+      ],
+      "@models/api": [
+        "src/app/shared/models/api/index.ts"
+      ],
+      "@models/utils": [
+        "src/app/shared/models/utils/index.ts"
+      ],
+      "@constants": [
+        "src/app/shared/constants/index.ts"
+      ],
+      "@components/*": [
+        "src/app/shared/components/*"
+      ],
+      "@interceptors": [
+        "src/app/shared/interceptors/index.ts"
+      ],
+      "@store/*": [
+        "src/app/shared/store/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

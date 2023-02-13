@@ -6,6 +6,12 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 app-root {
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-area: header;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
 }

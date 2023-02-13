@@ -1,0 +1,7 @@
+<div class="d-flex align-content-center justify-content-center">
+  <h1>Books</h1>
+  <a mat-stroked-button [routerLink]="['create']" class="ms-1"> Create </a>
+</div>
+
+<app-spinner [isLoading]="selectBooksProcess$ | async"></app-spinner>
+<app-books-table [dataSource]="selectBooks$ | async" (deleteEvent)='deleteBook($event)'></app-books-table>

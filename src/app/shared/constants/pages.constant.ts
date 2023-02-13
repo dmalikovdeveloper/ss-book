@@ -5,16 +5,19 @@ export const PAGES: PagesModel = {
     name: 'books',
     title: 'Books',
     url: 'books',
+    private: true
   },
   news: {
     name: 'news',
     title: 'news',
     url: 'news',
+    private: true
   },
   login: {
-    name: 'login',
+    name: 'Sign in',
     title: 'login',
-    url: 'login',
+    url: 'auth/sign-in',
+    private: false
   },
 };
 
