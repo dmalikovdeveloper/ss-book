@@ -2,23 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { mergeMap, Observable, skip, throwError } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { UserModel } from '@models/api';
 import { catchError } from 'rxjs/operators';
 import { AppState } from '../../reducers';
-import { selectRefreshTokenSuccess, selectUser } from '../../store/auth/reducers/auth.reducers';
+import { selectRefreshTokenSuccess } from '../../store/auth/reducers/auth.reducers';
 import { AuthService } from '../../modules/auth/shared/services/auth.service';
 import { refreshToken } from '../../store/auth/actions/auth.actions';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  selectUser$: Observable<UserModel | null>;
   selectRefreshTokenSuccess$: Observable<any>;
 
   constructor(
     private readonly store: Store<AppState>,
     private readonly authService: AuthService
   ) {
-    this.selectUser$ = this.store.pipe(select(selectUser));
     this.selectRefreshTokenSuccess$ = this.store.pipe(select(selectRefreshTokenSuccess));
   }
 

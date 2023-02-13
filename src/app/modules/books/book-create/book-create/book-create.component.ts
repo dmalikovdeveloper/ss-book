@@ -40,7 +40,7 @@ export class BookCreateComponent implements OnInit {
       nonNullable: true,
     }),
   });
-  selectCreateBook$: Observable<BookCreateModel | {}>;
+  selectCreateBook$: Observable<BookCreateModel | null>;
   selectBooksProcess$: Observable<boolean>;
   private selectSelectedBook$: Observable<BookModel | null>;
 

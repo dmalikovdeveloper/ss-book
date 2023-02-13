@@ -3,7 +3,7 @@ import { deepObjClone } from '@constants';
 import {
   createBook,
   createBookFailure,
-  createBookSuccess, deleteBook,
+  createBookSuccess, deleteBook, deleteBookFailure, deleteBookSuccess,
   getBooks,
   getBooksFailure,
   getBooksSuccess,
@@ -19,7 +19,7 @@ export interface BooksState {
   booksSuccess: boolean;
   booksProcess: boolean;
 
-  createBook: BookCreateModel | {};
+  createBook: BookCreateModel | null;
   createBookSuccess: boolean;
   createBookProcess: boolean;
 
@@ -36,7 +36,7 @@ export const initialState: BooksState = {
   books: [],
   booksSuccess: false,
   booksProcess: false,
-  createBook: {},
+  createBook: null,
   createBookSuccess: false,
   createBookProcess: false,
   selectedBook: null,
@@ -110,18 +110,23 @@ export const BookReducer = createReducer(
     deleteBookId: id,
     deletedBookProcess: true
   })),
-  on(createBookSuccess, (state: BooksState, { book }) => {
+  on(deleteBookSuccess, (state: BooksState, { id }) => {
     let books = state?.books ? deepObjClone(state.books) : [];
-    books = books.filter( (i: BookModel) => i.id !== book.id);
+    books = books.filter( (i: BookModel) => i.id !== id);
     const newState = {
       ...state,
       books,
       deleteBookSuccess: true,
       deletedBookProcess: false,
     };
+
+    if (state?.selectedBook?.id === id) {
+      newState.selectedBook = null;
+    }
+
     return newState;
   }),
-  on(createBookFailure, (state) => ({
+  on(deleteBookFailure, (state) => ({
     ...state,
     deleteBookSuccess: false,
     deletedBookProcess: false
