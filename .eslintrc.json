@@ -2,9 +2,13 @@
   "root": true,
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "parserOptions": {
-        "project": ["tsconfig.json"],
+        "project": [
+          "tsconfig.json"
+        ],
         "createDefaultProgram": true
       },
       "extends": [
@@ -27,7 +31,10 @@
           }
         ],
         "@typescript-eslint/promise-function-async": "error",
-        "brace-style": ["error", "1tbs"],
+        "brace-style": [
+          "error",
+          "1tbs"
+        ],
         "id-blacklist": "off",
         "id-match": "off",
         "import/order": "error",
@@ -37,13 +44,17 @@
         "no-template-curly-in-string": "error",
         "no-underscore-dangle": "off",
         "prefer-template": "error",
-        "guard-for-in": "off",
+        "guard-for-in":"off",
         "import/no-cycle": ["error", { "maxDepth": 1 }]
       }
     },
     {
-      "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
       "rules": {}
     }
   ]

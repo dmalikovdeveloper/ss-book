@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./control-text.component.scss']
 })
 export class ControlTextComponent {
-  @Input() control?: FormControl<string>
-  @Input() label?: string
-  @Input() type: 'text' | 'email' | 'number' | 'password' = 'text'
+  @Input() control?: FormControl<string>;
+  @Input() label?: string;
+  @Input() type: 'text' | 'email' | 'number' | 'password' = 'text';
 }

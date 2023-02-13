@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AppState } from '../../../../../reducers';
 import { select, Store } from '@ngrx/store';
-import { selectUser } from '../../../../../store/auth/reducers/auth.reducers';
 import { Observable } from 'rxjs';
 import { UserModel } from '@models/api';
+import { selectUser } from '../../../../../store/auth/reducers/auth.reducers';
+import { AppState } from '../../../../../reducers';
 import { logoutUser } from '../../../../../store/auth/actions/auth.actions';
 
 @Component({

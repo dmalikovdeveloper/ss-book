@@ -16,18 +16,15 @@ export class BooksComponent implements OnInit {
   selectBooks$: Observable<BookModel[]>;
   selectBooksProcess$: Observable<boolean>;
 
-  constructor(
-    private readonly store: Store<AppState>
-  ) {
+  constructor(private readonly store: Store<AppState>) {
     this.store.dispatch(getBooks());
     this.selectBooks$ = this.store.pipe(select(selectBooks));
     this.selectBooksProcess$ = this.store.pipe(select(selectBooksProcess));
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   deleteBook(id: number): void {
-    this.store.dispatch(deleteBook( { id }));
+    this.store.dispatch(deleteBook({ id }));
   }
 }

@@ -7,11 +7,11 @@ import { UserLoginModel, UserModel, UserRefreshTokenModel } from '@models/api';
   providedIn: 'root',
 })
 export class AuthService extends CoreApiService {
-  loginUrl = 'auth/sign-in'
-  refreshTokenUrl = 'auth/refreshtoken'
+  loginUrl = 'auth/sign-in';
+  refreshTokenUrl = 'auth/refreshtoken';
 
   constructor() {
-    super()
+    super();
   }
 
   login(user: UserLoginModel): Observable<UserModel> {

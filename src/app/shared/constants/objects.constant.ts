@@ -1,3 +1,1 @@
-export const deepObjClone = (obj: object | null) => {
-  return JSON.parse(JSON.stringify(obj));
-}
+export const deepObjClone = (obj: object | null) => JSON.parse(JSON.stringify(obj));

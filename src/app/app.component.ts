@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { UserModel } from '@models/api';
 import { select, Store } from '@ngrx/store';
-import { selectUser } from './store/auth/reducers/auth.reducers';
-import { AppState } from './reducers';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { NavigateService } from '@services/api';
+import { AppState } from './reducers';
+import { selectUser } from './store/auth/reducers/auth.reducers';
 
 @UntilDestroy()
 @Component({
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectUser$.pipe(untilDestroyed(this)).subscribe(async(res: UserModel | null) => {
+    this.selectUser$.pipe(untilDestroyed(this)).subscribe(async (res: UserModel | null) => {
       if(res) {
         await this.navigateService.goToBooks();
       } else {

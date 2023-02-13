@@ -20,10 +20,7 @@ export class BookViewComponent implements OnInit {
   selectSelectedBookProcess$: Observable<boolean>;
   selectSelectedBook$: Observable<BookModel | null>;
 
-  constructor(
-    private readonly store: Store<AppState>,
-    private readonly route: ActivatedRoute
-  ) {
+  constructor(private readonly store: Store<AppState>, private readonly route: ActivatedRoute) {
     const id = this.route.snapshot.paramMap.get('id');
     this.store.dispatch(selectBook({ id: Number(id) }));
     this.selectSelectedBook$ = this.store.pipe(select(selectSelectedBook));

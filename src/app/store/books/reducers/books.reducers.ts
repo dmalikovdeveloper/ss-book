@@ -1,4 +1,5 @@
 import { createReducer, on, createSelector } from '@ngrx/store';
+import { deepObjClone } from '@constants';
 import {
   createBook,
   createBookFailure,
@@ -11,7 +12,6 @@ import {
   selectBookSuccess,
 } from '../actions/books.actions';
 import { BookCreateModel, BookModel } from '../../../shared/models/api/books.model';
-import { deepObjClone } from '@constants';
 import { AppState } from '../../../reducers';
 
 export interface BooksState {
@@ -47,7 +47,7 @@ export const initialState: BooksState = {
   deletedBookProcess: false
 };
 
-export const TodoReducer = createReducer(
+export const BookReducer = createReducer(
   initialState,
   // get books
   on(getBooks, (state) => ({
@@ -56,7 +56,7 @@ export const TodoReducer = createReducer(
   })),
   on(getBooksSuccess, (state, { books }) => ({
     ...state,
-    books: books,
+    books,
     booksSuccess: true,
     booksProcess: false,
   })),

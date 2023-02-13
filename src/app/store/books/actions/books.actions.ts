@@ -50,7 +50,10 @@ export const createBookFailure = createAction(
 
 // selectBook
 export const selectBook = createAction(BooksActionTypes.SelectBook, props<{ id: number }>());
-export const selectBookSuccess = createAction(BooksActionTypes.SelectBookSuccess, props<{ book: BookModel }>());
+export const selectBookSuccess = createAction(
+  BooksActionTypes.SelectBookSuccess,
+  props<{ book: BookModel }>(),
+);
 export const selectBookFailure = createAction(
   BooksActionTypes.SelectBookFailure,
   props<{ message: string }>(),
@@ -58,7 +61,10 @@ export const selectBookFailure = createAction(
 
 // deleteBook
 export const deleteBook = createAction(BooksActionTypes.DeleteBook, props<{ id: number }>());
-export const deleteBookSuccess = createAction(BooksActionTypes.DeleteBookSuccess, props<{ id: number }>());
+export const deleteBookSuccess = createAction(
+  BooksActionTypes.DeleteBookSuccess,
+  props<{ id: number }>(),
+);
 export const deleteBookFailure = createAction(
   BooksActionTypes.DeleteBookFailure,
   props<{ message: string }>(),

@@ -2,12 +2,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginFormModel } from '@models/utils';
 import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { AppState } from '../../../../reducers';
 import { loginUser } from '../../../../store/auth/actions/auth.actions';
 import { selectUserLoginProcess } from '../../../../store/auth/reducers/auth.reducers';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-import { UntilDestroy } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({
@@ -30,7 +29,7 @@ export class LoginFormComponent implements OnInit {
 
   selectUserLoginProcess$: Observable<boolean>;
 
-  constructor(private readonly store: Store<AppState>, private readonly router: Router) {
+  constructor(private readonly store: Store<AppState>) {
     this.selectUserLoginProcess$ = this.store.pipe(select(selectUserLoginProcess));
   }
 

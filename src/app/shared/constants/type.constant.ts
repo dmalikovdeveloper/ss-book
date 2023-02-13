@@ -1,3 +1,1 @@
-export const isNumber = (value: any) => {
-  return Number.isInteger(value);
-}
+export const isNumber = (value: any) => Number.isInteger(value);

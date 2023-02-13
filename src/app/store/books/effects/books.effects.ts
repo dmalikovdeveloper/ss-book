@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { map, catchError, exhaustMap } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { of, switchMap } from 'rxjs';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
   createBook,
   createBookFailure,
@@ -10,7 +11,6 @@ import {
   getBooksSuccess, selectBook, selectBookFailure, selectBookSuccess,
 } from '../actions/books.actions';
 import { BooksService } from '../../../modules/books/shared/service/api/books.service';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { BookModel } from '../../../shared/models/api/books.model';
 
 @Injectable()
@@ -59,7 +59,7 @@ export class BooksEffects {
       ofType(deleteBook),
       switchMap(({ id }) =>
         this.booksService.deleteBook(id).pipe(
-          map((response: boolean) => deleteBookSuccess( { id: id })),
+          map((response: boolean) => deleteBookSuccess( { id })),
           catchError((error: string) => of(deleteBookFailure({ message: error }))))
       )
     )

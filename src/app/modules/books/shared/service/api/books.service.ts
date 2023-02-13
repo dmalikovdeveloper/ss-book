@@ -7,10 +7,10 @@ import { BookCreateModel, BookModel } from '../../../../../shared/models/api/boo
   providedIn: 'root',
 })
 export class BooksService extends CoreApiService {
-  booksUrl = 'book'
+  booksUrl = 'book';
 
   constructor() {
-    super()
+    super();
   }
 
   getBooks(): Observable<BookModel[]> {

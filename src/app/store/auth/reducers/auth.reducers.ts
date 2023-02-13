@@ -1,6 +1,7 @@
 import { createReducer, on, createSelector } from '@ngrx/store';
-import { AppState } from '../../../reducers';
 import { UserLoginModel, UserModel } from '@models/api';
+import { StorageService } from '@services/api';
+import { deepObjClone } from '@constants';
 import {
   loginUser,
   loginUserFailure,
@@ -10,8 +11,7 @@ import {
   refreshTokenFailure,
   refreshTokenSuccess,
 } from '../actions/auth.actions';
-import { StorageService } from '@services/api';
-import { deepObjClone } from '@constants';
+import { AppState } from '../../../reducers';
 
 export interface AuthState {
   userLogin: UserLoginModel | null;
@@ -68,7 +68,7 @@ export const AuthReducer = createReducer(
     refreshTokenProcess: true
   })),
   on(refreshTokenSuccess, (state, { userRefreshToken }) => {
-    let user = state.user;
+    const user = state.user;
     let userRefreshed = null;
     if (user) {
       const userClone = deepObjClone(user);
@@ -89,7 +89,7 @@ export const AuthReducer = createReducer(
       user: null,
       refreshTokenProcess: false,
       refreshTokenSuccess: null
-    }
+    };
   }),
 );
 

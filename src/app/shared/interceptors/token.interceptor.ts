@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { mergeMap, Observable, skip, throwError } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { AppState } from '../../reducers';
 import { UserModel } from '@models/api';
-import { selectRefreshTokenSuccess, selectUser } from '../../store/auth/reducers/auth.reducers';
 import { catchError } from 'rxjs/operators';
+import { AppState } from '../../reducers';
+import { selectRefreshTokenSuccess, selectUser } from '../../store/auth/reducers/auth.reducers';
 import { AuthService } from '../../modules/auth/shared/services/auth.service';
 import { refreshToken } from '../../store/auth/actions/auth.actions';
 
@@ -22,24 +22,8 @@ export class TokenInterceptor implements HttpInterceptor {
     this.selectRefreshTokenSuccess$ = this.store.pipe(select(selectRefreshTokenSuccess));
   }
 
-  private static unauthorized(error: any, req: HttpRequest<any>): boolean{
-    return error instanceof HttpErrorResponse && !req.url.includes('auth/sign-in') && error.status === 401
-  }
-
-  private setRequest(req: HttpRequest<any>): HttpRequest<any> {
-    const user = this.authService.getUser();
-    return !!user
-      ? req.clone({ setHeaders: { Authorization: 'Bearer ' + user.token } })
-      : req;
-  }
-
-  private handle401Error(req: HttpRequest<any>, next: HttpHandler) {
-    return this.selectRefreshTokenSuccess$.pipe(
-      skip(1),
-      mergeMap(() => {
-        return next.handle(this.setRequest(req));
-      })
-    );
+  static unauthorized(error: any, req: HttpRequest<any>): boolean{
+    return error instanceof HttpErrorResponse && !req.url.includes('auth/sign-in') && error.status === 401;
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
@@ -51,6 +35,20 @@ export class TokenInterceptor implements HttpInterceptor {
         }
         return throwError(error);
       })
-    )
+    );
+  }
+
+  private setRequest(req: HttpRequest<any>): HttpRequest<any> {
+    const user = this.authService.getUser();
+    return !!user
+      ? req.clone({ setHeaders: { Authorization: `Bearer ${  user.token}` } })
+      : req;
+  }
+
+  private handle401Error(req: HttpRequest<any>, next: HttpHandler) {
+    return this.selectRefreshTokenSuccess$.pipe(
+      skip(1),
+      mergeMap(() => next.handle(this.setRequest(req)))
+    );
   }
 }

@@ -21,6 +21,4 @@ export const PAGES: PagesModel = {
   },
 };
 
-export const ROUTES_LIST: PageModel[] = Object.keys(PAGES).map( (i: string) => {
-  return PAGES[i]
-})
+export const ROUTES_LIST: PageModel[] = Object.keys(PAGES).map( (i: string) => PAGES[i]);

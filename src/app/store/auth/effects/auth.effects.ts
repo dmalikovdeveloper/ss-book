@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { map, catchError, exhaustMap } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { of, switchMap } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { UserModel, UserRefreshTokenModel } from '@models/api';
 import {
   loginUser,
   loginUserFailure,
@@ -9,7 +10,6 @@ import {
   refreshToken, refreshTokenFailure,
   refreshTokenSuccess,
 } from '../actions/auth.actions';
-import { UserModel, UserRefreshTokenModel } from '@models/api';
 import { AuthService } from '../../../modules/auth/shared/services/auth.service';
 
 @Injectable()

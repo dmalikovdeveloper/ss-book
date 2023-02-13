@@ -1,13 +1,15 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { isNumber } from '@constants';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import {
   BookCreateModel,
   BookModel,
   BooksCreateFormModel,
 } from '../../../../shared/models/api/books.model';
-import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import {
   selectBooksProcess,
   selectCreateBook,
@@ -15,8 +17,6 @@ import {
 } from '../../../../store/books/reducers/books.reducers';
 import { createBook } from '../../../../store/books/actions/books.actions';
 import { AppState } from '../../../../reducers';
-import { isNumber } from '@constants';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({
